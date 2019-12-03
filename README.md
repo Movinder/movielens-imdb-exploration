@@ -1,6 +1,6 @@
 # Movinder
 
-This repositorium contains data exploration of MovieLens and IMDb datasets to create Movinder - movie recommendation system for a group of people.
+This repository contains data exploration of MovieLens and IMDb datasets to create Movinder - movie recommendation system for a group of people.
 
 
 ## Summary
