@@ -1,4 +1,11 @@
-data/
+data/*
+
+!data/users.csv
+!data/ratings.csv
+!data/movies.csv
+!data/companies.csv
+!data/cast.csv
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
