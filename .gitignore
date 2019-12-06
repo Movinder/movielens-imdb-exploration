@@ -1,11 +1,11 @@
-data/*
+data/*/*
 
 !data/users.csv
 !data/ratings.csv
 !data/movies.csv
 !data/companies.csv
 !data/cast.csv
-!data/*.html
+!data/reports/*.html
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
