@@ -5,6 +5,7 @@ data/*/*
 !data/movies.csv
 !data/companies.csv
 !data/cast.csv
+!data/all.csv
 !data/reports/*.html
 
 # Byte-compiled / optimized / DLL files

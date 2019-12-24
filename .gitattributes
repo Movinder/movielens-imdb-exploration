@@ -3,3 +3,4 @@ ratings.csv filter=lfs diff=lfs merge=lfs -text
 movies.csv filter=lfs diff=lfs merge=lfs -text
 companies.csv filter=lfs diff=lfs merge=lfs -text
 cast.csv filter=lfs diff=lfs merge=lfs -text
+*.csv filter=lfs diff=lfs merge=lfs -text
