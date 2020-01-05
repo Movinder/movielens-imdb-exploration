@@ -41,17 +41,19 @@
               <p class="mb-4 center-text">Then you're at the right place. <span style="font-weight: bold;">Movinder</span> helps you find the perfect movie for everyone with its unmatched wisdom !</p>
               <p class="mb-4 center-text" style="font-weight: bold;">How many people are you ?</p>
 
-              <form>
+              <form action="/" method="POST">
                 <div class="input-group mb-3">
-                  <select class="form-control" id="num-select">
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
+                  <select name="people-select" class="form-control">
+                    {% for o in range(2,7) %}
+                    <option value="{{ o }}">{{ o }}</option>
+                    {% endfor %}
                   </select>
                   <div class="input-group-append">
-                    <button class="btn btn-info" type="button">Find !</button>
+                    {% if settings.buttonDisable %}
+                    <button class="btn btn-info" type="submit" disabled>Find</button>
+                    {% else %}
+                    <button class="btn btn-info" type="submit">Find</button>
+                    {% endif %}
                   </div>
                 </div>
               </form>
@@ -61,14 +63,14 @@
       </div>
 
         <div class="col-md-6">
-
-          <div class="card div-center">
+          {% if settings.showVote %}
+          <div class="card div-center" style="background-color: rgba(0, 46, 102, 0.4);">
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <h5 class="card-title text-white">Card title</h5>
+              <p class="card-text text-white">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
               <form>
     
-                {%for i in range(5)%} 
+                {%for i in range(settings.people)%} 
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
                     <span class="input-group-text">Person {{i+1}}</span>
@@ -87,8 +89,7 @@
               <a href="#" class="btn btn-primary">Next Movie</a>
             </div>
           </div>
-
-
+          {% endif %}
 
         </div>
 
