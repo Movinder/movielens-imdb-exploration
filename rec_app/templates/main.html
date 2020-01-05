@@ -64,33 +64,47 @@
 
         <div class="col-md-6">
           {% if settings.showVote %}
-          <div class="card div-center" style="background-color: rgba(0, 46, 102, 0.4);">
+          <div class="card div-center" style="background-color: rgba(0, 46, 102, 0.2);">
             <div class="card-body">
-              <h5 class="card-title text-white">Card title</h5>
+              <h5 class="card-title text-white">{{ session['top15'][session['counter']+1] }}</h5>
+              
               <p class="card-text text-white">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <form>
-    
+              
+              <form action="/" method="POST">
+
                 {%for i in range(settings.people)%} 
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
                     <span class="input-group-text">Person {{i+1}}</span>
                   </div>
-                  <select class="form-control" id="person-select-{{ i }}">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                  <select class="form-control" id="person-select-{{ i }}" name="person-select-{{ i }}">
+                    <option value="1">1</optionvalue="{{ o }}">
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
                   </select>
                 </div>
                 {%endfor%}
-    
-              </form>
-              <a href="#" class="btn btn-primary">Next Movie</a>
+              
+              {%if session['counter'] < 13%}
+              <button class="btn btn-info" type="submit">Next Movie</button>
+              {% else %}
+              <button class="btn btn-primary" type="submit" name="run-model" value="run-model">Get Recommendations !</button>
+              {% endif %}
+
+              <h5 class="text-white" style="float: right;">{{ session['counter']+2 }} / 15</h5>
+            </form>
+
             </div>
           </div>
+          {% else %}
+            {% if settings.recommendation != None %}
+            {% block content %}
+              {% include 'movies.html' %}
+            {% endblock %}
+            {% endif %}
           {% endif %}
-
         </div>
 
       </div>

@@ -1,0 +1,15 @@
+<div class="row">
+
+    {% for i in range(9) %}
+        <div class="col-sm-4">
+            <div class="card" style="background-color: rgba(0, 46, 102, 0.15); margin-top: 3vh;">
+            <div class="card-body">
+                <h5 class="card-title">{{ settings.recommendation[i][0] }}</h5>
+                <p class="card-text"><b>Matching score:</b> {{ "%.2f"|format(settings.recommendation[i][1]) }}</p>
+                <a href="#" class="btn btn-primary">Watch it !</a>
+            </div>
+            </div>
+        </div>
+    {% endfor %}
+
+</div>
