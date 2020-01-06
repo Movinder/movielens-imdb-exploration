@@ -44,12 +44,12 @@ def recommendation(userArray, numUsers, movieIds):
     mat = np.dot(nmf.pu, nmf.qi.T)
 
     scores = hmean(mat[userIds, :], axis=0)
-    best_movies = scores.argsort()+1
-    best_movies = best_movies[-9:]
-    scores = scores[best_movies[-9:]-1]
-    movie_ind = [trainset.to_inner_iid(x) for x in best_movies]
+    best_movies = scores.argsort()
+    best_movies = best_movies[-9:][::-1]
+    scores = scores[best_movies]
+    movie_ind = [trainset.to_raw_iid(x) for x in best_movies]
 
-    return list(zip(list(df_ML_movies[df_ML_movies.movie_id_ml.isin(movie_ind)].title), list(scores)))[::-1]
+    return list(zip(list(df_ML_movies[df_ML_movies.movie_id_ml.isin(movie_ind)].title), list(scores)))
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -57,13 +57,13 @@ def main():
 
     if request.method == 'POST':
         
-        print(request.form)
-
         if 'run-model' in request.form:
             pu = recommendation(session['arr'], session['members'], session['movieIds'])
-            print(pu)
-            print("Get the recommendations here !")
-            session.clear()
+            session['counter'] = -1
+            session['members'] = 0
+            session['movieIds'] = [int(x) for x in (np.random.choice(movies_[-200:], 15, replace=False))]
+            session['top15'] = list(df_ML_movies[df_ML_movies.movie_id_ml.isin(session['movieIds'])].title)
+            session['arr'] = None
             return(render_template('main.html', settings = {'showVote': False, 'people': 0, 'buttonDisable': False, 'recommendation': pu}))
         else:
             if 'people-select' in request.form:
@@ -75,9 +75,6 @@ def main():
             elif 'person-select-0' in request.form:
                 for i in range(session['members']):
                     session['arr'][i][session['counter'] + 1] = int(request.form.get('person-select-{}'.format(i)))
-                
-                print(session['arr'])  
-                print(session['top15']) 
                 
                 session['counter'] += 1      
                 return(render_template('main.html', settings = {'showVote': True, 'people': len(request.form), 'buttonDisable': True, 'recommendation': None}))
