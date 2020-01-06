@@ -2,6 +2,9 @@
 
 This repository contains data exploration of MovieLens and IMDb datasets to create Movinder - movie recommendation system for a group of people.
 
+## Movinder is Online !
+You can access the initial version of Movinder by clicking the following link.
+- [Movinder](https://movinder.herokuapp.com)
 
 ## Summary
 **Course:** EE-558: A Network Tour of Data Science  

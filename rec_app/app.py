@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 from surprise import NMF, Dataset, Reader
 from scipy.stats import hmean 
-
+import os
 
 app = Flask(__name__, template_folder='templates')
 app.secret_key = "super secret key"
@@ -59,6 +59,7 @@ def main():
         
         if 'run-model' in request.form:
             pu = recommendation(session['arr'], session['members'], session['movieIds'])
+            session.clear()
             session['counter'] = -1
             session['members'] = 0
             session['movieIds'] = [int(x) for x in (np.random.choice(movies_[-200:], 15, replace=False))]
@@ -80,6 +81,7 @@ def main():
                 return(render_template('main.html', settings = {'showVote': True, 'people': len(request.form), 'buttonDisable': True, 'recommendation': None}))
 
     elif request.method == 'GET':
+        session.clear()
         session['counter'] = -1
         session['members'] = 0
         session['movieIds'] = [int(x) for x in (np.random.choice(movies_[-200:], 15, replace=False))]
@@ -88,7 +90,7 @@ def main():
 
         return(render_template('main.html', settings = {'showVote': False, 'people': 0, 'buttonDisable': False, 'recommendation': None}))
     
-
 if __name__ == '__main__':
-    session.clear()
-    app.run()
+    # Bind to PORT if defined, otherwise default to 5000.
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
