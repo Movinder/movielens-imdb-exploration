@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Movinder</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <!-- Custom fonts for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+
+</head>
+
+<body>
+  <div id="load-screen" style="display: none;"><div class="div-center"><img src="{{ url_for('static', filename='ajax-loader.gif') }}" alt="" /></div></div>
+  <div class="overlay"></div>
+  <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+    <source src="{{ url_for('static', filename='bg.mp4') }}" type="video/mp4">
+  </video>
+
+  <div class="masthead">
+    
+    <div class="masthead-bg"></div>
+
+    <div class="container-fluid h-100">
+      <div class="row h-100">
+        <div class="col-md-6">
+          <div class="masthead-content text-white">
+            <div class="div-center">
+              <h1 class="mb-2 center-text" style="text-align: center;">Movinder</h1>
+              <p class="mb-4 center-text">Do you have trouble picking what movie to watch with your friends ?</p>
+              <p class="mb-4 center-text">Then you're at the right place. <span style="font-weight: bold;">Movinder</span> helps you find the perfect movie for everyone with its unmatched wisdom !</p>
+              <p class="mb-4 center-text" style="font-weight: bold;">How many people are you ?</p>
+
+              <form action="/" method="POST">
+                <div class="input-group mb-3">
+                  <select name="people-select" class="form-control">
+                    {% for o in range(2,7) %}
+                    <option value="{{ o }}">{{ o }}</option>
+                    {% endfor %}
+                  </select>
+                  <div class="input-group-append">
+                    {% if settings.buttonDisable %}
+                    <button class="btn btn-info" type="submit" disabled>Find</button>
+                    {% else %}
+                    <button class="btn btn-info" type="submit">Find</button>
+                    {% endif %}
+                  </div>
+                </div>
+              </form>
+
+            </div>
+        </div>
+      </div>
+
+        <div class="col-md-6">
+          {% if settings.showVote %}
+          <div class="card div-center" style="background-color: rgba(0, 46, 102, 0.2);">
+            <div class="card-body">
+              <h5 class="card-title text-white">{{ session['top15'][session['counter']+1] }}</h5>
+              
+              <p class="card-text text-white">Please vote this movie without changing the voting order.</p>
+              
+              <form action="/" method="POST">
+
+                {%for i in range(settings.people)%} 
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Person {{i+1}}</span>
+                  </div>
+                  <select class="form-control" id="person-select-{{ i }}" name="person-select-{{ i }}">
+                    <option value="1">1</optionvalue="{{ o }}">
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+                </div>
+                {%endfor%}
+              
+              {%if session['counter'] < 13%}
+              <button class="btn btn-info" type="submit">Next Movie</button>
+              {% else %}
+              <button class="btn btn-primary" type="submit" name="run-model" value="run-model" onclick="$('#load-screen').css('display','block');">Get Recommendations !</button>
+              {% endif %}
+
+              <h5 class="text-white" style="float: right;">{{ session['counter']+2 }} / 15</h5>
+            </form>
+
+            </div>
+          </div>
+          {% else %}
+            {% if settings.recommendation != None %}
+            {% block content %}
+              {% include 'movies.html' %}
+            {% endblock %}
+            {% endif %}
+          {% endif %}
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="static/js/pace.min.js"></script>
+
+</body>
+
+</html>
