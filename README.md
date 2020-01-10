@@ -2,7 +2,7 @@
 
 <div align="center">
   <p>
-  <img src="First release" src="images/movie.gif" width="150" />
+  <img src="images/movie.gif" width="200" />
   </p>
   <p>
     <a href="">
