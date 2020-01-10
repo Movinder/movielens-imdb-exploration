@@ -90,6 +90,6 @@ Bellow you can find notebooks that were used to do data exploration as well as c
 
 
 ## Information
-**Course:** [EE-558: A Network Tour of Data Science](https://github.com/mdeff/ntds_2019)
+**Course:** [EE-558: A Network Tour of Data Science](https://github.com/mdeff/ntds_2019)  
 **Team:** Team 6  
 **Members:**  Can Yilmaz Altinigne, Jelena Banjac, Sofia Kypraiou, Panagiotis Sioulas 
