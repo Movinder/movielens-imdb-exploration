@@ -66,13 +66,15 @@ better results when used as a recommender tool. If we have enough time, we are a
 to build a basic web app for movie recommendations for groups of people.
 
 ## Movinder is Online !
-You can access the initial version of Movinder by clicking the following link.
-- [Movinder](https://movinder.herokuapp.com)
+You can access the initial version of Movinder by clicking the following link: [Movinder](https://movinder.herokuapp.com)
 
-## Summary
-**Course:** EE-558: A Network Tour of Data Science  
-**Team:** Team 6  
-**Members:**  Can Yilmaz Altinigne, Jelena Banjac, Sofia Kypraiou, Panagiotis Sioulas  
+## Data Exploration Reports
+Bellow we have a profiler report of the 5 dataframes. They represent the result of merging the Movielens and IMDb datasets:
+- [Cast](https://htmlpreview.github.io/?https://github.com/Movinder/movielens-imdb-exploration/blob/master/data/reports/cast_report.html)
+- [Companies](https://htmlpreview.github.io/?https://github.com/Movinder/movielens-imdb-exploration/blob/master/data/reports/companies_report.html)
+- [Movies](https://htmlpreview.github.io/?https://github.com/Movinder/movielens-imdb-exploration/blob/master/data/reports/movies_report.html)
+- [Ratings](https://htmlpreview.github.io/?https://github.com/Movinder/movielens-imdb-exploration/blob/master/data/reports/ratings_report.html)
+- [Users](https://htmlpreview.github.io/?https://github.com/Movinder/movielens-imdb-exploration/blob/master/data/reports/users_report.html)
 
 ## Notebooks
 Bellow you can find notebooks that were used to do data exploration as well as create different neural networks:
@@ -85,10 +87,9 @@ Bellow you can find notebooks that were used to do data exploration as well as c
 - [Movie Recommendation using the LightFM network for Groups of Friends](https://nbviewer.jupyter.org/github/Movinder/movielens-imdb-exploration/blob/master/movie_recommendation_with_LightFM_friends.ipynb) - implementing the LightFM on the data that is dealing with groups of users
 - [Movie Recommendation for Website](https://nbviewer.jupyter.org/github/Movinder/movielens-imdb-exploration/blob/master/movie_recommendation_with_LightFM_friends_WEBAPP.ipynb) - network implementation that will be used on the website as a Siamese Neural Network option.
 
-## Data Reports
-Bellow we have a profiler report of the 5 dataframes. They represent the result of merging the Movielens and IMDb datasets:
-- [Cast](https://htmlpreview.github.io/?https://github.com/Movinder/movielens-imdb-exploration/blob/master/data/reports/cast_report.html)
-- [Companies](https://htmlpreview.github.io/?https://github.com/Movinder/movielens-imdb-exploration/blob/master/data/reports/companies_report.html)
-- [Movies](https://htmlpreview.github.io/?https://github.com/Movinder/movielens-imdb-exploration/blob/master/data/reports/movies_report.html)
-- [Ratings](https://htmlpreview.github.io/?https://github.com/Movinder/movielens-imdb-exploration/blob/master/data/reports/ratings_report.html)
-- [Users](https://htmlpreview.github.io/?https://github.com/Movinder/movielens-imdb-exploration/blob/master/data/reports/users_report.html)
+
+
+## Information
+**Course:** [EE-558: A Network Tour of Data Science](https://github.com/mdeff/ntds_2019)
+**Team:** Team 6  
+**Members:**  Can Yilmaz Altinigne, Jelena Banjac, Sofia Kypraiou, Panagiotis Sioulas 
