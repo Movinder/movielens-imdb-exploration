@@ -87,7 +87,8 @@ Bellow you can find notebooks that were used to do data exploration as well as c
 - [Movie Recommendation using the LightFM network for Groups of Friends](https://nbviewer.jupyter.org/github/Movinder/movielens-imdb-exploration/blob/master/movie_recommendation_with_LightFM_friends.ipynb) - implementing the LightFM on the data that is dealing with groups of users
 - [Movie Recommendation for Website](https://nbviewer.jupyter.org/github/Movinder/movielens-imdb-exploration/blob/master/movie_recommendation_with_LightFM_friends_WEBAPP.ipynb) - network implementation that will be used on the website as a Siamese Neural Network option.
 
-
+## Project Report
+The report in the following link [here](team_6.pdf).
 
 ## Information
 **Course:** [EE-558: A Network Tour of Data Science](https://github.com/mdeff/ntds_2019)  
