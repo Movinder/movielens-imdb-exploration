@@ -11,7 +11,7 @@
   </p>
 
   <p>
-    <strong>Exploring Comics</strong>
+    <strong>Movinder</strong>
   </p>
   
   <p>
